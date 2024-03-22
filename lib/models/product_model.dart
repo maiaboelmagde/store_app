@@ -1,5 +1,5 @@
 class ProductModel {
-  String id;
+  int id;
   String title;
   String description;
   String image;
@@ -18,12 +18,12 @@ class ProductModel {
         title: jsonData['title'],
         description: jsonData['description'],
         image: jsonData['image'],
-        rating: jsonData['rating']);
+        rating: RatingModel.fromJson(jsonData['rating']));
   }
 }
 
 class RatingModel {
-  double rate;
+  num rate;
   num count;
   RatingModel({required this.count, required this.rate});
 
