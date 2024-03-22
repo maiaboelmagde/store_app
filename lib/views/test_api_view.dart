@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/models/product_model.dart';
+import 'package:store_app/services/all_categoties_service.dart';
 import 'package:store_app/services/get_all_products_service.dart';
 
 class TestApiView extends StatelessWidget {
@@ -9,7 +10,7 @@ class TestApiView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: FutureBuilder(
-      future: AllProductsService().getAllProducts(),
+      future: AllCategoriesService().getAllCategories(),
       builder: (context, snapshot) {
         return snapshot.hasData
             ? Column(
@@ -26,7 +27,7 @@ class TestApiView extends StatelessWidget {
                         itemCount: snapshot.data?.length,
                         itemBuilder: (context, indx) {
                           return Column(children: [
-                            Text(snapshot.data![indx].title),
+                            Text(snapshot.data![indx]),
                             Divider(color: Colors.black)
                           ]);
                         }),
