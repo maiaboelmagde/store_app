@@ -18,7 +18,7 @@ class TestApiView extends StatelessWidget {
                 children: [
                   Center(
                     child: Text(
-                      (snapshot.data?.length).toString() ?? 'jgvk',
+                      (snapshot.data?.length).toString(),
                       style: TextStyle(fontSize: 60),
                     ),
                   ),

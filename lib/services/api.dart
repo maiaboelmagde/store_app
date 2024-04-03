@@ -14,7 +14,7 @@ class Api {
     }
   }
 
-  Future<List<dynamic>> post(
+  Future<Map<String, dynamic>> post(
       {required String url,
       required Map<String, dynamic> body,
       @required token}) async {
@@ -26,7 +26,7 @@ class Api {
         await http.post(Uri.parse(url), body: body, headers: headers);
 
     if (response.statusCode == 200) {
-      List<dynamic> responseList = jsonDecode(response.body);
+      Map<String, dynamic> responseList = jsonDecode(response.body);
       return responseList;
     } else {
       throw Exception(
