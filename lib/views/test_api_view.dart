@@ -37,7 +37,7 @@ class TestApiView extends StatelessWidget {
               )
             : const Center(
                 child: Text(
-                  'Loding . . .',
+                  'Loading . . .',
                   style: TextStyle(fontSize: 60),
                 ),
               );

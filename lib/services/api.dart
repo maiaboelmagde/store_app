@@ -33,4 +33,25 @@ class Api {
           "There is an error with StatusCode ${response.statusCode} at Api().post(...) while the body is ${response.body}");
     }
   }
+
+  Future<Map<String, dynamic>> put(
+      {required String url,
+      required Map<String, dynamic> body,
+      @required token}) async {
+    Map<String, String> headers = {};
+    headers.addAll({'Content-Type': 'Content-Type'});
+    if (token != null) {
+      headers.addAll({'Authorization': 'Bearer $token'});
+    }
+    http.Response response =
+        await http.put(Uri.parse(url), body: body, headers: headers);
+
+    if (response.statusCode == 200) {
+      Map<String, dynamic> responseList = jsonDecode(response.body);
+      return responseList;
+    } else {
+      throw Exception(
+          "There is an error with StatusCode ${response.statusCode} at Api().post(...) while the body is ${response.body}");
+    }
+  }
 }
