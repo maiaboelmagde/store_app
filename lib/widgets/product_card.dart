@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({
-    super.key,
-  });
+  final ProductModel product;
+  const ProductCard({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +14,8 @@ class ProductCard extends StatelessWidget {
           decoration: BoxDecoration(boxShadow: [
             BoxShadow(
               blurRadius: 70,
-              spreadRadius: 5,
-              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 1,
+              color: Colors.grey.withOpacity(0.2),
               offset: Offset(1, 1),
             )
           ]),
@@ -28,13 +28,16 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'name',
-                    style: TextStyle(color: Colors.grey, fontSize: 20),
+                    product.title,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(r'$225'),
+                      Text(r'$' '${product.price}'),
                       Icon(Icons.favorite),
                     ],
                   )
@@ -47,7 +50,7 @@ class ProductCard extends StatelessWidget {
           top: -20,
           left: 50,
           child: Image.network(
-            "https://www.christies.com/img/LotImages/2017/PAR/2017_PAR_14537_0087_000(sac_constance_24_en_cuir_swift_bleu_saphir_garniture_en_metal_argente).jpg",
+            product.image,
             height: 150,
             width: 150,
           ),
